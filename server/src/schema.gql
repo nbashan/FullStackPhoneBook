@@ -3,13 +3,22 @@
 # ------------------------------------------------------
 
 type Contact {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  address: String!
+  firstName: String!
+  id: Int!
+  lastName: String!
+  nickName: String!
+  phoneNumbers: [String!]!
+  photo: String!
 }
 
 input CreateContactInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  address: String!
+  firstName: String!
+  lastName: String!
+  nickName: String!
+  phoneNumbers: [String!]!
+  photo: String!
 }
 
 type Mutation {
@@ -20,10 +29,15 @@ type Mutation {
 
 type Query {
   contact(id: Int!): Contact!
+  contacts: [Contact!]!
 }
 
 input UpdateContactInput {
-  """Example field (placeholder)"""
-  exampleField: Int
+  address: String!
+  firstName: String!
   id: Int!
+  lastName: String!
+  nickName: String!
+  phoneNumbers: [String!]!
+  photo: String!
 }

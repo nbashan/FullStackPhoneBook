@@ -2,6 +2,21 @@ import { InputType, Int, Field } from '@nestjs/graphql';
 
 @InputType()
 export class CreateContactInput {
-  @Field(() => Int, { description: 'Example field (placeholder)' })
-  exampleField: number;
+  @Field()
+  firstName: string;
+
+  @Field()
+  lastName: string;
+
+  @Field()
+  nickName: string;
+
+  @Field()
+  address: string;
+
+  @Field(() => [String])
+  phoneNumbers: string[];
+
+  @Field()
+  photo: string;
 }
