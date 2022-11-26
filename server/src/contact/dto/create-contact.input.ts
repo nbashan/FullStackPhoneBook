@@ -1,3 +1,4 @@
+import { Optional } from '@nestjs/common';
 import { InputType, Int, Field } from '@nestjs/graphql';
 
 @InputType()
@@ -8,15 +9,15 @@ export class CreateContactInput {
   @Field()
   lastName: string;
 
-  @Field()
+  @Field(() => String, { defaultValue: 'no nickName' })
   nickName: string;
 
   @Field()
   address: string;
 
-  @Field(() => [String])
+  @Field((type) => [String], { defaultValue: [] }) // nullable: false makes no difference at all
   phoneNumbers: string[];
 
-  @Field()
+  @Field(() => String, { defaultValue: 'no picture' })
   photo: string;
 }

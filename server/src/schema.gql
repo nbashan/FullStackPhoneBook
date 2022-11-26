@@ -16,9 +16,9 @@ input CreateContactInput {
   address: String!
   firstName: String!
   lastName: String!
-  nickName: String!
-  phoneNumbers: [String!]!
-  photo: String!
+  nickName: String = "no nickName"
+  phoneNumbers: [String!] = []
+  photo: String = "no picture"
 }
 
 type Mutation {
@@ -37,7 +37,7 @@ input UpdateContactInput {
   firstName: String!
   id: Int!
   lastName: String!
-  nickName: String!
-  phoneNumbers: [String!]!
-  photo: String!
+  nickName: String = "no nickName"
+  phoneNumbers: [String!] = []
+  photo: String = "no picture"
 }
