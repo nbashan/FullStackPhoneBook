@@ -1,19 +1,31 @@
 import { Injectable } from '@nestjs/common';
+import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateContactInput } from './dto/create-contact.input';
 import { UpdateContactInput } from './dto/update-contact.input';
 
 @Injectable()
 export class ContactService {
-  create(createContactInput: CreateContactInput) {
-    return 'This action adds a new contact';
+  constructor(private prisma: PrismaService) {}
+
+  async create(createContactInput: CreateContactInput) {
+    return await this.prisma.contact.create({
+      data: {
+        firstName: createContactInput.firstName,
+        lastName: createContactInput.lastName,
+        nickName: createContactInput.nickName,
+        address: createContactInput.address,
+        phoneNumbers: createContactInput.phoneNumbers,
+        photo: createContactInput.photo,
+      },
+    });
   }
 
   findAll() {
-    return `This action returns all contact`;
+    return this.prisma.contact.findMany();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} contact`;
+    return this.prisma.contact.findUnique({ where: { id } });
   }
 
   update(id: number, updateContactInput: UpdateContactInput) {
@@ -21,6 +33,6 @@ export class ContactService {
   }
 
   remove(id: number) {
-    return `This action removes a #${id} contact`;
+    return this.prisma.contact.delete({ where: { id } });
   }
 }
