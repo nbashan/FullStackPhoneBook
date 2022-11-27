@@ -29,7 +29,17 @@ export class ContactService {
   }
 
   update(id: number, updateContactInput: UpdateContactInput) {
-    return `This action updates a #${id} contact`;
+    return this.prisma.contact.update({
+      where: { id },
+      data: {
+        firstName: updateContactInput.firstName,
+        lastName: updateContactInput.lastName,
+        nickName: updateContactInput.nickName,
+        address: updateContactInput.address,
+        phoneNumbers: updateContactInput.phoneNumbers,
+        photo: updateContactInput.photo,
+      },
+    });
   }
 
   remove(id: number) {
