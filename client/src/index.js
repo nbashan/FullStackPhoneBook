@@ -10,16 +10,19 @@ import { App } from "./App";
 import "bootstrap/dist/css/bootstrap.css";
 import "./index.css";
 
-const client = new ApolloClient({
-  uri: "http://localhost:3333/graphql",
-  cache: new InMemoryCache(),
-});
+refreshPage();
+export function refreshPage() {
+  const client = new ApolloClient({
+    uri: "http://localhost:3333/graphql",
+    cache: new InMemoryCache(),
+  });
 
-ReactDOM.render(
-  <ApolloProvider client={client}>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  </ApolloProvider>,
-  document.getElementById("root")
-);
+  ReactDOM.render(
+    <ApolloProvider client={client}>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </ApolloProvider>,
+    document.getElementById("root")
+  );
+}

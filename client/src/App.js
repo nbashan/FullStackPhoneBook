@@ -1,10 +1,7 @@
 import { useQuery } from "@apollo/client";
 import { GET_CONTACTS, GET_CONTACT } from "./gql/Query";
-import { Update } from "./components/update";
 import React, { useState } from "react";
-import { TableRow } from "./components/tableRow";
-
-import { Add } from "./components/add";
+import { TableRow, Add, Update, Remove } from "./components/index";
 
 function UpdateComponent(id) {
   const { loading, error, data } = useQuery(GET_CONTACT, {
@@ -41,21 +38,21 @@ export function App() {
         data.contacts.map(
           (contact) =>
             contact && (
-              <button
-                onClick={() => {
-                  setSelectedId(contact.id);
-                }}
-              >
-                <TableRow
-                  id={contact.id}
-                  firstName={contact.firstName}
-                  lastName={contact.lastName}
-                  nickName={contact.nickName}
-                  address={contact.address}
-                  phoneNumbers={contact.phoneNumbers}
-                  photo={contact.photo}
-                />
-              </button>
+              <>
+                <button
+                  onClick={() => {
+                    setSelectedId(contact.id);
+                  }}
+                >
+                  <TableRow
+                    firstName={contact.firstName}
+                    lastName={contact.lastName}
+                    nickName={contact.nickName}
+                    photo={contact.photo}
+                  />
+                </button>
+                <Remove id={contact.id} />
+              </>
             )
         )}
       {selectedId != 0 && (

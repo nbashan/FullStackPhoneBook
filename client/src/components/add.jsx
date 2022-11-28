@@ -3,6 +3,7 @@ import { useMutation } from "@apollo/client";
 import { CREATE_CONTACT } from "../gql/Mutation";
 import anonomous from "../images/anonomous.png";
 import { ContactPhoto } from "./contactPhoto";
+import { refreshPage } from "..";
 
 export function Add() {
   const [firstName, setFirstName] = useState("Enter first name...");
@@ -10,7 +11,7 @@ export function Add() {
   const [nickName, setNickName] = useState("Enter nickName");
   const [address, setAddress] = useState("Enter address");
   const [phoneNumbers, setPhoneNumbers] = useState("Enter phoneNumbers");
-  const [photo, setPhoto] = useState("Enter photo");
+  const [photo, setPhoto] = useState(anonomous);
 
   const [createContact] = useMutation(CREATE_CONTACT);
 
@@ -92,6 +93,8 @@ export function Add() {
                     phoneNumbers: phoneNumbers,
                     photo: photo,
                   },
+                }).then((value) => {
+                  refreshPage();
                 });
                 console.log("successfull!!!");
               }}
