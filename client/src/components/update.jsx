@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { UPDATE_CONTACT } from "../gql/Mutation";
 import { useMutation } from "@apollo/client";
 import { ContactPhoto } from "./contactPhoto";
+import { refreshPage } from "..";
+
 export function Update(props) {
   const [updateContactFunction] = useMutation(UPDATE_CONTACT);
 
@@ -95,6 +97,8 @@ export function Update(props) {
                   phoneNumbers: phoneNumbers,
                   photo: photo,
                 },
+              }).then((value) => {
+                refreshPage();
               });
               console.log("successfull!!!");
             }}
