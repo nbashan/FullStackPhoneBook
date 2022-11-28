@@ -1,101 +1,75 @@
-import { useMutation, useQuery } from "@apollo/client";
-import { GET_CONTACTS } from "./gql/Query";
-import { CREATE_CONTACT, REMOVE_CONTACT, UPDATE_CONTACT } from "./gql/Mutation";
+import { useQuery } from "@apollo/client";
+import { GET_CONTACTS, GET_CONTACT } from "./gql/Query";
+import { Update } from "./components/update";
+import React, { useState } from "react";
+import { TableRow } from "./components/tableRow";
+
+import { Add } from "./components/add";
+
+function UpdateComponent(id) {
+  const { loading, error, data } = useQuery(GET_CONTACT, {
+    variables: { id: id.id },
+  });
+
+  if (loading) return <h1>Loading...</h1>;
+  if (error) return <h1>error</h1>;
+  console.log("got here", id, data);
+  return (
+    <Update
+      id={data.contact.id}
+      firstName={data.contact.firstName}
+      lastName={data.contact.lastName}
+      nickName={data.contact.nickName}
+      address={data.contact.address}
+      phoneNumbers={data.contact.phoneNumbers}
+      photo={data.contact.photo}
+    />
+  );
+}
 
 export function App() {
-  // const { loading, error, data } = useQuery(GET_CONTACTS);
+  const { loading, error, data } = useQuery(GET_CONTACTS);
+  const [selectedId, setSelectedId] = useState(0);
 
-  // const { loading, error, data } = useQuery(GET_CONTACT, {
-  //   variables: { id: 1 },
-  // });
-
-  // const [createContact] = useMutation(CREATE_CONTACT);
-
-  // const [updateContact] = useMutation(UPDATE_CONTACT);
-
-  // const [removeContact] = useMutation(REMOVE_CONTACT);
-
+  if (loading) return <h1>Loading...</h1>;
+  if (error) return <h1>Error...</h1>;
+  console.log(data);
   return (
     <div>
-      <h1>hello world</h1>
+      <Add />
+      {!selectedId &&
+        data.contacts.map(
+          (contact) =>
+            contact && (
+              <button
+                onClick={() => {
+                  setSelectedId(contact.id);
+                }}
+              >
+                <TableRow
+                  id={contact.id}
+                  firstName={contact.firstName}
+                  lastName={contact.lastName}
+                  nickName={contact.nickName}
+                  address={contact.address}
+                  phoneNumbers={contact.phoneNumbers}
+                  photo={contact.photo}
+                />
+              </button>
+            )
+        )}
+      {selectedId != 0 && (
+        <>
+          <button
+            onClick={() => {
+              setSelectedId(0);
+            }}
+          >
+            <h1>CLOSE</h1>
+          </button>
+          <UpdateComponent id={selectedId} />
+        </>
+      )}
     </div>
   );
-
-  //   <button
-  //   onClick={() => {
-  //     createContact({
-  //       variables: {
-  //         firstName: "netanel5",
-  //         lastName: "bashan5",
-  //         nickName: "nati5",
-  //         address: "hanatziv5",
-  //         phoneNumbers: ["555", "555"],
-  //         photo: "55",
-  //       },
-  //     });
-  //     console.log("success!");
-  //   }}
-  // >
-  //   Create Contact
-  // </button>
-  // <button
-  //   onClick={() => {
-  //     removeContact({
-  //       variables: { id: 1 },
-  //     });
-  //     console.log("success!");
-  //   }}
-  // >
-  //   Remove Contact
-  // </button>
-  // <button
-  //   onClick={() => {
-  //     updateContact({
-  //       variables: {
-  //         id: 3,
-  //         firstName: "netanel5",
-  //         lastName: "bashan5",
-  //         nickName: "nati5",
-  //         address: "hanatziv5",
-  //         phoneNumbers: ["555", "555"],
-  //         photo: "55",
-  //       },
-  //     });
-  //     console.log("success!");
-  //   }}
-  // >
-  //   Update Contact
-  // </button>
-
-  // if (loading) return <h1>Loading...</h1>;
-  // if (error) return <h1>Error...</h1>;
-
-  // return (
-  //   <div>
-  //     <table border="2">
-  //       <tbody>
-  //         <tr>
-  //           <th>ID</th>
-  //           <th>FIRST_NAME</th>
-  //           <th>LAST_NAME</th>
-  //           <th>NICK_NAME</th>
-  //           <th>ADDRESS</th>
-  //           <th>PHONE_NUMBERS</th>
-  //           <th>PHOTO</th>
-  //         </tr>
-  //         {data.contacts.map((contact) => (
-  //           <tr>
-  //             <td>{contact.id}</td>
-  //             <td>{contact.firstName}</td>
-  //             <td>{contact.lastName}</td>
-  //             <td>{contact.nickName}</td>
-  //             <td>{contact.address}</td>
-  //             <td>{contact.phoneNumbers}</td>
-  //             <td>{contact.photo}</td>
-  //           </tr>
-  //         ))}
-  //       </tbody>
-  //     </table>
-  //   </div>
-  // );
 }
