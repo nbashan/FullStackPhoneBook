@@ -21,7 +21,19 @@ export class ContactService {
   }
 
   findAll() {
-    return this.prisma.contact.findMany();
+    return this.prisma.contact.findMany({
+      orderBy: [
+        {
+          nickName: 'desc',
+        },
+        {
+          firstName: 'desc',
+        },
+        {
+          lastName: 'desc',
+        },
+      ],
+    });
   }
 
   findOne(id: number) {
