@@ -1,1 +1,3 @@
 # FullStackPhoneBook
+
+![preview](preview.gif)
