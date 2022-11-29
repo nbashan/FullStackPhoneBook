@@ -1,0 +1,17 @@
+export const addresses = [
+  "777 Brockton Avenue, Abington MA 2351",
+  "30 Memorial Drive, Avon MA 2322",
+  "250 Hartford Avenue, Bellingham MA 2019",
+  "700 Oak Street, Brockton MA 2301",
+  "66-4 Parkhurst Rd, Chelmsford MA 1824",
+  "591 Memorial Dr, Chicopee MA 1020",
+  "55 Brooksby Village Way, Danvers MA 1923",
+  "137 Teaticket Hwy, East Falmouth MA 2536",
+  "42 Fairhaven Commons Way, Fairhaven MA 2719",
+  "374 William S Canning Blvd, Fall River MA 2721",
+  "121 Worcester Rd, Framingham MA 1701",
+  "677 Timpany Blvd, Gardner MA 1440",
+  "337 Russell St, Hadley MA 1035",
+  "295 Plymouth Street, Halifax MA 2338",
+  "1775 Washington St, Hanover MA 2339",
+];

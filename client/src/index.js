@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import {
   ApolloClient,
   InMemoryCache,
@@ -17,12 +17,13 @@ export function refreshPage() {
     cache: new InMemoryCache(),
   });
 
-  ReactDOM.render(
+  const root = ReactDOM.createRoot(document.getElementById("root"));
+
+  root.render(
     <ApolloProvider client={client}>
       <React.StrictMode>
         <App />
       </React.StrictMode>
-    </ApolloProvider>,
-    document.getElementById("root")
+    </ApolloProvider>
   );
 }

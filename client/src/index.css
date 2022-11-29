@@ -1,5 +1,89 @@
 img {
     width: 80px;
     height: 80px;
+    border-radius: 50%;
  }
- 
+/*  
+ button {
+    border: 80%;
+    border-radius: 10%;
+    background-color: rgb(175, 255, 188);
+    pointer-events: ;
+ } */
+
+ button {
+    display: inline-block;
+    background-color: #a0dbff;
+    color: rgb(77, 0, 150);
+    /* margin: 25px; */
+    position: relative;
+    border-radius: 3px;
+    border: none;
+    font-size: 1.5em;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 2px 8px 0 #999;
+  }
+  button:hover {
+    background-color: #999;
+    color: #ffcc00;
+  }
+
+.page {
+    background-color: rgb(236, 255, 255);
+        
+}
+
+ #parent {
+    /* height: 100px; */
+    white-space: nowrap;
+    overflow-x: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.child {
+    display: inline-block;
+    /* border-radius: 1000px; */
+    padding: 10px 30px 30px;
+    /* margin-top: 20px; */
+    margin-left: 20px;
+}
+
+
+.add{
+    width: 10cm;
+    height: 10cm;
+
+}
+
+.title{
+    background-color: rgb(62, 184, 255);
+    margin-top: 2cm;
+    width: 10cm;
+    height:2cm;
+    text-align: center; 
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 20%;
+
+    
+}
+.createDataBase{
+    text-align: center;  
+    padding-top: 100px;
+}
+
+
+
+
+
+.addTable{
+    background-color: #ffeb9d;
+}
+
+.updateTable{
+    background-color: rgb(130, 248, 159);
+    overflow-x: auto;
+}

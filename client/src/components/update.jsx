@@ -3,6 +3,7 @@ import { UPDATE_CONTACT } from "../gql/Mutation";
 import { useMutation } from "@apollo/client";
 import { ContactPhoto } from "./contactPhoto";
 import { refreshPage } from "..";
+import { MdUpdate } from "react-icons/md";
 
 export function Update(props) {
   const [updateContactFunction] = useMutation(UPDATE_CONTACT);
@@ -16,7 +17,7 @@ export function Update(props) {
   const [photo, setPhoto] = useState(props.photo);
 
   return (
-    <table border="2">
+    <table border="2" className="updateTable">
       <tbody>
         <tr>
           <th>FIRST_NAME</th>
@@ -103,7 +104,7 @@ export function Update(props) {
               console.log("successfull!!!");
             }}
           >
-            Update Contact
+            <MdUpdate />
           </button>
         </td>
       </tbody>

@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { useMutation } from "@apollo/client";
-import { REMOVE_CONTACT } from "../gql/Mutation";
 
 export function TableRow(props) {
   const [nickName, setNickName] = useState(props.nickName);
@@ -10,6 +8,9 @@ export function TableRow(props) {
     <div>
       <h1>{nickName}</h1>
       <img src={photo} />
+      {/* <img style={{ filter: "blur(5px) " }} src={photo} />
+      <img style={{ filter: "grayscale(100%)" }} src={photo} />
+      <img style={{ filter: "saturate(200%)" }} src={photo} /> */}
     </div>
   );
 }

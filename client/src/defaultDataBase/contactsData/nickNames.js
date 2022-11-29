@@ -1,0 +1,17 @@
+export const nickNames = [
+  "Papa Smurf",
+  "Pepper Legs",
+  "Pinball Wizard",
+  "Pluto",
+  "Pogue",
+  "Prometheus",
+  "Psycho Thinker",
+  "Pusher",
+  "Riff Raff",
+  "Roadblock",
+  "Rooster",
+  "Sandbox",
+  "Scrapper",
+  "Screwtape",
+  "Shadow Chaser",
+];

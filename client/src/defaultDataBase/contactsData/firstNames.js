@@ -1,0 +1,17 @@
+export const firstNames = [
+  "Aaren",
+  "Aarika",
+  "Abagael",
+  "Abagail",
+  "Abbe",
+  "Abbey",
+  "Abbi",
+  "Abbie",
+  "Abby",
+  "Abbye",
+  "Abigael",
+  "Abigail",
+  "Abigale",
+  "Abra",
+  "Ada",
+];

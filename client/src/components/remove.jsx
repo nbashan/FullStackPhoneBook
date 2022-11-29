@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { REMOVE_CONTACT } from "../gql/Mutation";
 import { refreshPage } from "..";
+import { IoPersonRemove } from "react-icons/io5";
 
 export function Remove(props) {
   const [id, setId] = useState(props.id);
@@ -20,7 +21,7 @@ export function Remove(props) {
           console.log(id, "success!");
         }}
       >
-        REMOVE
+        <IoPersonRemove />
       </button>
     </div>
   );
